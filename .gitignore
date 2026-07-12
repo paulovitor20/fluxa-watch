@@ -43,3 +43,17 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Environment
+.env
+.env.*
+
+# Firebase
+google-services.json
+GoogleService-Info.plist
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
