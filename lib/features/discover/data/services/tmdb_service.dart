@@ -69,4 +69,20 @@ class TmdbService {
         .map((e) => MediaModel.fromJson(e))
         .toList();
   }
+
+  Future<List<MediaModel>> getTrendingDoramas() async {
+    final response = await _dio.get(
+      '/discover/tv',
+      queryParameters: {
+        'api_key': _apiKey,
+        'language': 'pt-BR',
+        'with_origin_country': 'KR',
+        'sort_by': 'popularity.desc',
+      },
+    );
+
+    return (response.data['results'] as List)
+        .map((e) => MediaModel.fromJson(e))
+        .toList();
+  }
 }

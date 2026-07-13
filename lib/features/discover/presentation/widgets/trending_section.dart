@@ -12,6 +12,7 @@ class TrendingSection extends ConsumerWidget {
     final movies = ref.watch(trendingMoviesProvider);
     final tv = ref.watch(trendingTvProvider);
     final anime = ref.watch(trendingAnimeProvider);
+    final doramas = ref.watch(trendingDoramasProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,6 +26,9 @@ class TrendingSection extends ConsumerWidget {
         const SizedBox(height: 24),
 
         _buildSection(title: "🎌 Animes", provider: anime),
+        const SizedBox(height: 24),
+
+        _buildSection(title: "🇰🇷 Doramas", provider: doramas),
       ],
     );
   }

@@ -25,3 +25,7 @@ final searchProvider = FutureProvider.family<List<MediaModel>, String>((
 ) async {
   return ref.read(discoverRepositoryProvider).search(query);
 });
+
+final trendingDoramasProvider = FutureProvider<List<MediaModel>>((ref) async {
+  return ref.read(discoverRepositoryProvider).getTrendingDoramas();
+});
