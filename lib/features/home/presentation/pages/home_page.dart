@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluxa_watch/core/core.dart';
 import 'package:fluxa_watch/shared/shared.dart';
 
 import '../widgets/continue_watching_section.dart';

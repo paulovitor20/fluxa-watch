@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluxa_watch/shared/shared.dart';
-
+import 'package:fluxa_watch/features/discover/presentation/pages/discover_page.dart';
 import 'home_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -16,13 +16,9 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> pages = const [
     HomePage(),
-
-    Center(child: Text("Descobrir")),
-
+    DiscoverPage(),
     Center(child: Text("Calendário")),
-
     Center(child: Text("Estatísticas")),
-
     Center(child: Text("Perfil")),
   ];
 
