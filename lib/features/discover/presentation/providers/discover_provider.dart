@@ -7,6 +7,14 @@ final discoverRepositoryProvider = Provider<DiscoverRepository>((ref) {
   return DiscoverRepository();
 });
 
-final trendingProvider = FutureProvider<List<MediaModel>>((ref) async {
-  return ref.read(discoverRepositoryProvider).getTrending();
+final trendingMoviesProvider = FutureProvider<List<MediaModel>>((ref) async {
+  return ref.read(discoverRepositoryProvider).getTrendingMovies();
+});
+
+final trendingTvProvider = FutureProvider<List<MediaModel>>((ref) async {
+  return ref.read(discoverRepositoryProvider).getTrendingTv();
+});
+
+final trendingAnimeProvider = FutureProvider<List<MediaModel>>((ref) async {
+  return ref.read(discoverRepositoryProvider).getTrendingAnime();
 });

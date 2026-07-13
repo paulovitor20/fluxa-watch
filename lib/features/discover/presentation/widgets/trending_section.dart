@@ -1,31 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../providers/discover_provider.dart';
 import '../../../home/presentation/widgets/media_card.dart';
+import '../providers/discover_provider.dart';
 
 class TrendingSection extends ConsumerWidget {
   const TrendingSection({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final trending = ref.watch(trendingProvider);
+    final movies = ref.watch(trendingMoviesProvider);
+    final tv = ref.watch(trendingTvProvider);
+    final anime = ref.watch(trendingAnimeProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Em alta",
-          style: TextStyle(
+        _buildSection(title: "🎬 Filmes em alta", provider: movies),
+
+        const SizedBox(height: 24),
+
+        _buildSection(title: "📺 Séries em alta", provider: tv),
+
+        const SizedBox(height: 24),
+
+        _buildSection(title: "🎌 Animes", provider: anime),
+      ],
+    );
+  }
+
+  Widget _buildSection({required String title, required AsyncValue provider}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
             color: Colors.white,
-            fontSize: 22,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),
 
-        const SizedBox(height: 16),
+        const SizedBox(height: 12),
 
-        trending.when(
+        provider.when(
           loading: () => const SizedBox(
             height: 225,
             child: Center(child: CircularProgressIndicator()),

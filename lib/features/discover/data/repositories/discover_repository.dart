@@ -4,7 +4,15 @@ import '../services/tmdb_service.dart';
 class DiscoverRepository {
   final TmdbService _service = TmdbService();
 
-  Future<List<MediaModel>> getTrending() async {
-    return _service.getTrending();
+  Future<List<MediaModel>> getTrendingMovies() async {
+    return await _service.getTrendingMovies();
+  }
+
+  Future<List<MediaModel>> getTrendingTv() async {
+    return await _service.getTrendingTv();
+  }
+
+  Future<List<MediaModel>> getTrendingAnime() async {
+    return await _service.getTrendingAnime();
   }
 }

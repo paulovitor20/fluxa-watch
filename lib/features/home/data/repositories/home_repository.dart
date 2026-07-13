@@ -5,10 +5,12 @@ class HomeRepository {
   final TmdbService _tmdb = TmdbService();
 
   Future<List<MediaModel>> getContinueWatching() async {
-    return await _tmdb.getTrending();
+    // Temporariamente usamos filmes em alta.
+    return await _tmdb.getTrendingMovies();
   }
 
   Future<List<MediaModel>> getRecommendations() async {
-    return await _tmdb.getTrending();
+    // Temporariamente usamos séries em alta.
+    return await _tmdb.getTrendingTv();
   }
 }
