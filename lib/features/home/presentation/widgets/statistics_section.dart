@@ -10,7 +10,7 @@ class StatisticsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(22),
+      padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         gradient: LinearGradient(
@@ -74,11 +74,11 @@ class _StatItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 70,
+      width: 58,
       child: Column(
         children: [
           CircleAvatar(
-            radius: 28,
+            radius: 22,
             backgroundColor: AppColors.primary.withOpacity(.15),
             child: Icon(icon, color: AppColors.primary),
           ),
@@ -90,7 +90,7 @@ class _StatItem extends StatelessWidget {
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 22,
+              fontSize: 16,
             ),
           ),
 

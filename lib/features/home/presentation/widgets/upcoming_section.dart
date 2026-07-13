@@ -61,7 +61,7 @@ class UpcomingSection extends StatelessWidget {
     required String streaming,
   }) {
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: const Color(0xff171717),
         borderRadius: BorderRadius.circular(18),
@@ -72,8 +72,8 @@ class UpcomingSection extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
               image,
-              width: 72,
-              height: 72,
+              width: 56,
+              height: 56,
               fit: BoxFit.cover,
             ),
           ),
@@ -90,7 +90,7 @@ class UpcomingSection extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -105,7 +105,7 @@ class UpcomingSection extends StatelessWidget {
           const SizedBox(width: 12),
 
           SizedBox(
-            width: 95,
+            width: 78,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [

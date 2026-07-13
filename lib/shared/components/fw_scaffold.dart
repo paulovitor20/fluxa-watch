@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluxa_watch/shared/components/fw_app_bar.dart';
+
 import 'package:fluxa_watch/core/core.dart';
 
 class FwScaffold extends StatelessWidget {
@@ -11,6 +11,7 @@ class FwScaffold extends StatelessWidget {
   final Widget? bottomNavigationBar;
   final Widget? floatingActionButton;
   final EdgeInsetsGeometry? padding;
+  final Color? backgroundColor;
 
   const FwScaffold({
     super.key,
@@ -22,25 +23,37 @@ class FwScaffold extends StatelessWidget {
     this.bottomNavigationBar,
     this.floatingActionButton,
     this.padding,
+    this.backgroundColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    Widget content = padding != null
-        ? Padding(padding: padding!, child: body)
-        : body;
+    Widget content = body;
+
+    if (padding != null) {
+      content = Padding(padding: padding!, child: content);
+    }
 
     if (safeArea) {
       content = SafeArea(child: content);
     }
 
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: showAppBar && title != null
-          ? FwAppBar(title: title!, actions: actions)
+      backgroundColor: backgroundColor ?? AppColors.background,
+
+      appBar: showAppBar
+          ? AppBar(
+              title: title != null ? Text(title!) : null,
+              backgroundColor: backgroundColor ?? AppColors.background,
+              elevation: 0,
+              actions: actions,
+            )
           : null,
+
       body: content,
+
       bottomNavigationBar: bottomNavigationBar,
+
       floatingActionButton: floatingActionButton,
     );
   }

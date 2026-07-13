@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:fluxa_watch/core/core.dart';
-import 'package:fluxa_watch/shared/shared.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});
 
-  String greeting() {
+  String _greeting() {
     final hour = DateTime.now().hour;
 
     if (hour < 12) return "Bom dia";
@@ -33,47 +32,46 @@ class HomeHeader extends StatelessWidget {
                 "FLUXA WATCH",
                 style: TextStyle(
                   color: AppColors.primary,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 15,
+                  letterSpacing: 1.2,
                 ),
               ),
             ),
-
             IconButton(
               onPressed: () {},
               icon: const Icon(
                 Icons.notifications_none_rounded,
                 color: Colors.white,
+                size: 30,
               ),
             ),
-
+            const SizedBox(width: 8),
             CircleAvatar(
-              radius: 22,
+              radius: 18,
               backgroundColor: AppColors.primary,
               child: Text(
-                name.substring(0, 1).toUpperCase(),
+                name.isNotEmpty ? name[0].toUpperCase() : "?",
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
+                  fontSize: 15,
                 ),
               ),
             ),
           ],
         ),
-
-        const SizedBox(height: 24),
-
+        const SizedBox(height: 18),
         Text(
-          "${greeting()}, $name 👋",
+          "${_greeting()}, $name 👋",
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 34,
+            fontSize: 22,
+            height: 1.1,
           ),
         ),
-
-        const SizedBox(height: 6),
-
+        const SizedBox(height: 8),
         const Text(
           "Pronto para maratonar algo incrível?",
           style: TextStyle(color: Colors.white70, fontSize: 18),

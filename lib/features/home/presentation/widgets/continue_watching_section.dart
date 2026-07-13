@@ -16,11 +16,11 @@ class ContinueWatchingSection extends StatelessWidget {
         const SizedBox(height: 18),
 
         SizedBox(
-          height: 315,
+          height: 225,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: 4,
-            separatorBuilder: (_, __) => const SizedBox(width: 16),
+            separatorBuilder: (_, __) => const SizedBox(width: 10),
             itemBuilder: (_, index) {
               return const MediaCard(
                 imageUrl:
