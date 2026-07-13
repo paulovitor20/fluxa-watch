@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:fluxa_watch/core/core.dart';
 import 'package:fluxa_watch/shared/shared.dart';
-
+import 'package:go_router/go_router.dart';
 import '../providers/login_provider.dart';
 
 class LoginPage extends ConsumerWidget {
@@ -63,11 +63,7 @@ class LoginPage extends ConsumerWidget {
                       await provider.login();
 
                       if (context.mounted) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Login realizado com sucesso'),
-                          ),
-                        );
+                        context.go('/home');
                       }
                     } catch (e) {
                       if (context.mounted) {

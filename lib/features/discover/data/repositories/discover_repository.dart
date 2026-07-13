@@ -1,9 +1,10 @@
+import '../models/media_model.dart';
 import '../services/tmdb_service.dart';
 
 class DiscoverRepository {
-  final _service = TmdbService();
+  final TmdbService _service = TmdbService();
 
-  Future getTrending() {
-    return _service.trending();
+  Future<List<MediaModel>> getTrending() {
+    return _service.getTrending();
   }
 }
