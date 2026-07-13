@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../providers/home_provider.dart';
 import 'media_card.dart';
 import 'section_title.dart';
 
-class RecommendationSection extends StatelessWidget {
+class RecommendationSection extends ConsumerWidget {
   const RecommendationSection({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final recommendations = ref.watch(recommendationsProvider);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -18,22 +22,42 @@ class RecommendationSection extends StatelessWidget {
 
         const SizedBox(height: 18),
 
-        SizedBox(
-          height: 225,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            separatorBuilder: (_, __) => const SizedBox(width: 10),
-            itemBuilder: (_, __) {
-              return const MediaCard(
-                imageUrl:
-                    "https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
-                title: "Interstellar",
-                subtitle: "Filme",
-                progress: 0,
-              );
-            },
+        recommendations.when(
+          loading: () => const SizedBox(
+            height: 225,
+            child: Center(child: CircularProgressIndicator()),
           ),
+
+          error: (e, _) => SizedBox(
+            height: 225,
+            child: Center(
+              child: Text(
+                e.toString(),
+                style: const TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+
+          data: (list) {
+            return SizedBox(
+              height: 225,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: list.length,
+                separatorBuilder: (_, __) => const SizedBox(width: 10),
+                itemBuilder: (_, index) {
+                  final movie = list[index];
+
+                  return MediaCard(
+                    imageUrl: movie.poster,
+                    title: movie.title,
+                    subtitle: movie.mediaType.toUpperCase(),
+                    progress: 0,
+                  );
+                },
+              ),
+            );
+          },
         ),
       ],
     );
