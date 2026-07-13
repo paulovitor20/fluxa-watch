@@ -51,4 +51,22 @@ class TmdbService {
         .map((e) => MediaModel.fromJson(e))
         .toList();
   }
+
+  Future<List<MediaModel>> search(String query) async {
+    if (query.trim().isEmpty) return [];
+
+    final response = await _dio.get(
+      '/search/multi',
+      queryParameters: {
+        'api_key': _apiKey,
+        'language': 'pt-BR',
+        'query': query,
+      },
+    );
+
+    return (response.data['results'] as List)
+        .where((e) => e['media_type'] == 'movie' || e['media_type'] == 'tv')
+        .map((e) => MediaModel.fromJson(e))
+        .toList();
+  }
 }

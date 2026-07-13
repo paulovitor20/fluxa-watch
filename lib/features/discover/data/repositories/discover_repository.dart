@@ -15,4 +15,8 @@ class DiscoverRepository {
   Future<List<MediaModel>> getTrendingAnime() async {
     return await _service.getTrendingAnime();
   }
+
+  Future<List<MediaModel>> search(String query) async {
+    return await _service.search(query);
+  }
 }
